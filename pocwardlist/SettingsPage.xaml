@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="pocwardlist.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Settings">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Close" />
+    </ContentPage.ToolbarItems>
+
+    <ListView
+        GroupDisplayBinding="{Binding Title}"
+        GroupShortNameBinding="{Binding ShortName}"
+        IsGroupingEnabled="True"
+        ItemsSource="{Binding ColumnGroups}"
+        SelectionMode="None">
+        <!--  Built in Cells  -->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell
+                    Command="{Binding Tapped}"
+                    Detail="{Binding Value}"
+                    Text="{Binding Header}"
+                    TextColor="{Binding StatusColor}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
